@@ -1,0 +1,37 @@
++------------------+            +--------------------------+
+| Cliente          |            | Servidor                 |
++------------------+            +--------------------------+
+        |                                   |
+        | (1) GET /registro                 |
+        |---------------------------------->|
+        |          (2) Mostrar formulario   |
+        |<----------------------------------|
+        |                                   |
+        | (3) POST /registro (datos)        |
+        |---------------------------------->|
+        |                                   |
+        |                                   +--> (4) validar_datos_registro()
+        |                                   |     (asíncrono)
+        |                                   |       |-- verificarLongitud()
+        |                                   |       |-- verificarFormatoCorreo()
+        |                                   |       |-- verificarCaracteresPermitidos()
+        |                                   |       |-- verificarLongitudContraseña()
+        |                                   |       +-- verificarCombinacionLetrasNumeros()
+        |                                   |
+        |                                   +--> (5) comprobar_disponibilidad_registro()
+        |                                   |     (asíncrono)
+        |                                   |       |-- nombreUsuarioDisponible()
+        |                                   |       +-- correoElectronicoDisponible()
+        |                                   |
+        |                                   +--> (6) cifrar_y_almacenar_datos_registro()
+        |                                         (asíncrono)
+        |                                         |-- cifrarContraseña()
+        |                                         +-- almacenarUsuarioEnBaseDeDatos()
+        |                                   |
+        |    (7) Resultado del registro     |
+        |<----------------------------------|
+        |                                   |
+        |                                   +--> (8) enviar_correo_confirmacion()
+                                              (asíncrono)
+                                              |-- crearMensajeCorreo()
+                                              +-- enviarCorreo()

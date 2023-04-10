@@ -1,0 +1,44 @@
++------------+       +-------------------+       +-----------------+       +-----------------+      +--------------+
+|  Cliente   |       |  AuthController   |       |  AuthService    |       |  Validators     |      | EmailService |
++------------+       +-------------------+       +-----------------+       +-----------------+      +--------------+
+       |                        |                         |                           |                            |
+        ----mostrar_formulario_registro()--->             |                           |                            |
+       |                        |                         |                           |                            |
+        <--renderizar formulario---------                 |                           |                            |
+       |                        |                         |                           |                            |
+        ----enviar datos_registro------>|                 |                           |                            |
+       |                        |                         |                           |                            |
+        ------obtener_datos_registro()----->              |                           |                            |
+       |                        |                         |                           |                            |
+        <-----datos_registro--------                      |                           |                            |
+       |                         ----validar_datos_registro(datos_registro)-->        |                            |
+       |                        |                          ----verificarLongitud(valor, min, max)-->               |
+       |                        |                          <---------resultado--------                             |
+       |                        |                          ----verificarFormatoCorreo(correoElectronico)-->        |
+       |                        |                          <---------resultado--------                             |
+       |                        |                          ----verificarCaracteresPermitidos(valor)-->             |
+       |                        |                          <---------resultado--------                             |
+       |                        |                          ----verificarLongitudContraseña(contraseña)-->          |
+       |                        |                          <---------resultado--------                             |
+       |                        |                          ----verificarCombinacionLetrasNumeros(contraseña)-->    |
+       |                        |                          <---------resultado--------                             |
+       |                         <----resultado validación--------                                                 |
+       |                         ----comprobar_disponibilidad_registro(datos_registro)-->                          |                            
+       |                        |                          ----nombreUsuarioDisponible(nombreUsuario)-->           |
+       |                        |                          <---------resultado--------                             |
+       |                        |                          ----correoElectronicoDisponible(correoElectronico)-->   |
+       |                        |                          <---------resultado--------                             |
+       |                         <------resultado disponibilidad-----                                              |
+       |                         ----cifrar_y_almacenar_datos_registro(datos_registro)-->                          |                            
+       |                        |                          ----cifrarContraseña(contraseña)-->                     |
+       |                        |                          <---------contraseña cifrada-------                     |
+       |                        |                          ----almacenarUsuarioEnBaseDeDatos(datosCifrados)-->     |
+       |                        |                          <---------confirmación--------                          |
+       |                         <----resultado almacenamiento-------                                              |
+       |                         ----enviar_correo_confirmacion_registro(datos_registro)-->                        |
+       |                        |                         |                         ----crearMensajeCorreo(datos_registro)-->
+       |                        |                         |                         <-----------mensajeCorreo-----------
+       |                        |                         |                         ----enviarCorreo(destinatario, mensajeCorreo)-->
+       |                        |                         |                         <------------confirmación------------
+       |                         <-----resultado email confirmación----                                            |                            
+        ----mostrar_resultado

@@ -1,0 +1,43 @@
+proyecto/
+│
+├── src/
+│   ├── app.module.ts
+│   ├── main.ts
+│   ├── config/
+│   │   └── database.config.ts
+│   ├── auth/
+│   │   ├── auth.module.ts
+│   │   ├── dto/
+│   │   │   └── register.dto.ts
+│   │   ├── controllers/
+│   │   │   └── auth.controller.ts
+│   │   │       ├── obtener_datos_registro()
+│   │   │       └── mostrar_resultado_registro(resultado)
+│   │   ├── models/
+│   │   │   └── user.model.ts
+│   │   ├── services/
+│   │   │   └── auth.service.ts
+│   │   │       ├── validar_datos_registro(datos_registro)
+│   │   │       ├── comprobar_disponibilidad_registro(datos_registro)
+│   │   │       └── cifrar_y_almacenar_datos_registro(datos_registro)
+│   │   └── utilities/
+│   │       └── validators.ts
+│   │           ├── verificarLongitud(valor, min, max)
+│   │           ├── verificarFormatoCorreo(correoElectronico)
+│   │           ├── verificarCaracteresPermitidos(valor)
+│   │           ├── verificarLongitudContraseña(contraseña)
+│   │           └── verificarCombinacionLetrasNumeros(contraseña)
+│   └── email/
+│       ├── email.module.ts
+│       └── services/
+│           └── email.service.ts
+│               └── enviar_correo_confirmacion_registro(datos_registro)
+│
+├── test/
+│   └── ...
+├── package.json
+├── tsconfig.json
+└── ...
+
+
+
