@@ -11,9 +11,7 @@ const common_1 = require("@nestjs/common");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
-    (0, common_1.Module)({
-        imports: [],
-    })
+    (0, common_1.Module)({})
 ], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map
